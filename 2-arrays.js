@@ -117,6 +117,8 @@ function sum(array) {
 
 assertEquals(sum([1, 2, 3, 4]), 10);
 assertEquals(sum([10, 10, 10]), 30);
+assertEquals(sum([0, 0, 0]), 0);
+assertEquals(sum([]), 0);
 
 /* ---------------------- EXERCISE 7 ---------------------- */
 // Define a function that returns an array of even numbers
@@ -132,6 +134,10 @@ function evenNumbersOnly(array) {
 
 assertEquals(evenNumbersOnly([1, 2, 3, 4]), [2, 4]);
 assertEquals(evenNumbersOnly([10, 11, 12]), [10, 12]);
+//assertEquals(evenNumbersOnly([1, 11, 123]), []);
+assertEquals(evenNumbersOnly([10, 14, 12]), [10 ,14, 12]);
+//assertEquals(evenNumbersOnly([]), []);
+
 
 /* ---------------------- EXERCISE 8 ---------------------- */
 // Define a function that returns the sum of even numbers in the array
@@ -142,3 +148,6 @@ function sumEvenNumbers(array) {
 
 assertEquals(sumEvenNumbers([1, 2, 3, 4]), 6);
 assertEquals(sumEvenNumbers([10, 11, 12]), 22);
+assertEquals(sumEvenNumbers([1, 11, 123]), 0);
+assertEquals(sumEvenNumbers([10, 8, 12]), 30);
+assertEquals(sumEvenNumbers([]), 0);
