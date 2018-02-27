@@ -81,7 +81,17 @@ assertEquals(listValues(books, 'title'), ['The Road Ahead', 'Lord of the Rings',
 
 // 2.4 Define a function getAvailableBooks(booksArray) that returns a list of available books
 
-// assertEquals(getAvailableBooks(books), ['The Road Ahead', 'Lord of the Rings'])
+function getAvailableBooks(booksArray){
+  var result = [];
+  for (book of booksArray){
+    if (book.isAvailable){
+      result.push(book.title);
+    }
+  }
+  return result;
+}
+
+assertEquals(getAvailableBooks(books), ['The Road Ahead', 'Lord of the Rings'])
 
 /* ---------------------- EXERCISE 3 ---------------------- */
 /* 3.1 Define an object named fluffycat with the following properties/methods:
