@@ -4,23 +4,51 @@ var assertEquals = require("./test-helper");
 // Write a JavaScript function which accept a number as input and insert dashes (-) between each two even numbers. (Sample input: 025486, Sample output: 0-254-8-6)
 
 function addDashes(numString) {
-  return "0-254-8-6";
+  result = [];
+  for (i = 0; i < numString.length-1; i++){
+    result.push(numString[i]);
+    if (parseInt(numString[i]) % 2 == 0 && parseInt(numString[i+1]) % 2 == 0){
+      result.push('-');
+    }
+  }
+  result.push(numString[numString.length-1]);
+  return result.join('');
 }
 
 assertEquals(addDashes("025486"), "0-254-8-6"); // check that your function works as expected
-// assertEquals(dash('111246777'), '1112-4-6777') // uncomment this and run program. if test passes, uncomment subsequent tests one by one
-// assertEquals(dash('0021100'), '0-0-2110-0')
-// assertEquals(dash('your test input'), 'your expected output') // uncomment this line and add 2-3 more test cases. Do the same for all remaining functions
+assertEquals(addDashes('111246777'), '1112-4-6777'); // uncomment this and run program. if test passes, uncomment subsequent tests one by one
+assertEquals(addDashes('0021100'), '0-0-2110-0');
+assertEquals(addDashes(''), ''); // uncomment this line and add 2-3 more test cases. Do the same for all remaining functions
+assertEquals(addDashes('0'), '0');
+assertEquals(addDashes('2468'), '2-4-6-8');
+assertEquals(addDashes('1357'), '1357');
 
 /* ---------------------- EXERCISE 2 ---------------------- */
 // Write a Javascript function to find the most frequent item of an array. It should return a string denoting the item and the number of times it occurs in the array. (Sample input: [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3], expected output : 'a (5 times)')
 
-function mostFrequentItem(arr) {}
+function mostFrequentItem(arr) {
+  counts = [];
+  arr.forEach( (e) => {
+    if (!(e in counts)){
+      counts[e] = 0;
+    }
+    counts[e] += 1;
+  });
 
+  var highest = Object.keys(counts)[0];
+  for (var k in counts){
+    if (counts[k] > counts[highest]){
+      highest = k;
+    }
+  }
+  return highest;
+}
 // uncomment the following test to run it
-// assertEquals(mostFrequentItem(['a', 'a', 'b']), 'a')
-// assertEquals(mostFrequentItem(['a', 'b', 'b', 'b', 'c', 'a', 'b', 'a', 'b']), 'b')
-// assertEquals(mostFrequentItem(['yes', 'yes', 'no', 'no', 'yes']), 'yes')
+assertEquals(mostFrequentItem(['a', 'a', 'b']), 'a');
+assertEquals(mostFrequentItem(['a', 'b', 'b', 'b', 'c', 'a', 'b', 'a', 'b']), 'b');
+assertEquals(mostFrequentItem(['yes', 'yes', 'no', 'no', 'yes']), 'yes');
+assertEquals(mostFrequentItem([]), undefined);
+assertEquals(mostFrequentItem(['yes', 'yes', 'no', 'no', 'yes', 'no']), 'yes');
 
 /* ---------------------- EXERCISE 3 ---------------------- */
 // Write a Javascript function to remove duplicate items from an array (ignore case sensitivity). (Sample input : [1, 'a', 'A', 'b', 2, 2], expected output: [1, 'a', 'b', 2])
