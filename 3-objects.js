@@ -100,8 +100,18 @@ assertEquals(getAvailableBooks(books), ['The Road Ahead', 'Lord of the Rings'])
     - makeSound() // return 'meow!'
     - introduceSelf() // return 'meow! my name is fluffy'
 */
+var fluffycat = {
+  name: "fluffy",
+  type: "pet",
+  makeSound: function(){
+    return "meow!";
+  },
+  introduceSelf: function(){
+    return "meow! my name is fluffy";
+  }
+}
 
-// assertEquals(fluffycat.name, "fluffy");
-// assertEquals(fluffycat.type, "pet");
-// assertEquals(fluffycat.makeSound(), "meow!");
-// assertEquals(fluffycat.introduceSelf(), "meow! my name is fluffy");
+assertEquals(fluffycat.name, "fluffy");
+assertEquals(fluffycat.type, "pet");
+assertEquals(fluffycat.makeSound(), "meow!");
+assertEquals(fluffycat.introduceSelf(), "meow! my name is fluffy");
