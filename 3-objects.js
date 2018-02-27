@@ -40,22 +40,44 @@ var books = [
 ];
 
 // 2.1 Define a function listTitles(booksArray) that takes in an array of book objects and returns an array of titles (strings)
-function listTitles(booksArray) {}
+function listTitles(booksArray) {
+  var result = [];
+  for (var book of booksArray) {
+    result.push(book.title);
+  }
+  return result;
+}
 
-// assertEquals(listTitles(books), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
+assertEquals(listTitles(books), [
+  "The Road Ahead",
+  "Lord of the Rings",
+  "Harry Potter: The Prisoner of Azkaban"
+]);
 
 // 2.2 Define a function listAuthors(booksArray) that takes in an array of book objects and returns an array of authors (strings)
 
-function listAuthors(booksArray) {}
+function listAuthors(booksArray) {
+  var result = [];
+  for (var book of booksArray) {
+    result.push(book.author);
+  }
+  return result;
+}
 
-// assertEquals(listTitles(books), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
+assertEquals(listAuthors(books), ["Bill Gates", "JRR Tolkkien", "JK Rowling"]);
 
 // 2.3 Define a more general function listValues(booksArray, key) that takes in an array of book objects and returns an array of authors (strings)
 
-function listValues(booksArray, key) {}
+function listValues(booksArray, key) {
+  var result = [];
+  for (var book of booksArray){
+    result.push(book[key]);
+  }
+  return result;
+}
 
-// assertEquals(listValues(books, 'author'), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
-// assertEquals(listValues(books, 'title'), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
+assertEquals(listValues(books, 'author'), ['Bill Gates', 'JRR Tolkkien', 'JK Rowling'])
+assertEquals(listValues(books, 'title'), ['The Road Ahead', 'Lord of the Rings', 'Harry Potter: The Prisoner of Azkaban'])
 
 // 2.4 Define a function getAvailableBooks(booksArray) that returns a list of available books
 
