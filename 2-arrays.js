@@ -4,7 +4,7 @@ var assertEquals = require("./test-helper");
 // Write a JavaScript function which accept a number as input and insert dashes (-) between each two even numbers. (Sample input: 025486, Sample output: 0-254-8-6)
 
 function addDashes(numString) {
-  result = [];
+  var result = [];
   for (i = 0; i < numString.length-1; i++){
     result.push(numString[i]);
     if (parseInt(numString[i]) % 2 == 0 && parseInt(numString[i+1]) % 2 == 0){
@@ -27,7 +27,7 @@ assertEquals(addDashes('1357'), '1357');
 // Write a Javascript function to find the most frequent item of an array. It should return a string denoting the item and the number of times it occurs in the array. (Sample input: [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3], expected output : 'a (5 times)')
 
 function mostFrequentItem(arr) {
-  counts = [];
+  var counts = [];
   arr.forEach( (e) => {
     if (!(e in counts)){
       counts[e] = 0;
@@ -53,7 +53,7 @@ assertEquals(mostFrequentItem(['yes', 'yes', 'no', 'no', 'yes', 'no']), 'yes');
 /* ---------------------- EXERCISE 3 ---------------------- */
 // Write a Javascript function to remove duplicate items from an array (ignore case sensitivity). (Sample input : [1, 'a', 'A', 'b', 2, 2], expected output: [1, 'a', 'b', 2])
 function removeDuplicateItems(arr) {
-  result = [];
+  var result = [];
   arr.forEach( (e) => {
     if (typeof(e) == "string") {
       if (!result.includes(e.toLowerCase())){
@@ -75,7 +75,7 @@ assertEquals(removeDuplicateItems([1, 'a', 'A', 'b', 'B', 2, 2]), [1, 'a', 'b', 
 /* ---------------------- EXERCISE 4 ---------------------- */
 // Write a Javascript function to compute the union of two arrays. the returned array should be sorted in ascending order (Sample input: union([1, 2, 3], [100, 2, 1, 10]), expected output: [1, 2, 3, 10, 100])
 function union(arr1, arr2) {
-  result = arr1.slice();
+  var result = arr1.slice();
   arr2.forEach( (e) => {
     if (!result.includes(e)){
       result.push(e);
@@ -93,7 +93,13 @@ assertEquals(union([1, 2, 3], [100, 2, 1, 10]), [1, 2, 3, 10, 100])
 
 /* ---------------------- EXERCISE 5 ---------------------- */
 // Write a Javascript function to compute sum of a union. (Hint: Reuse the union() function which you wrote!) (Sample input: intersection([1, 2, 3], [1, 2]), expected output: 3)
-function unionSum() {}
-// assertEquals(unionSum([1, 2, 3], [1, 2]), 3)
-// assertEquals(unionSum([1, 2, 3, 4], [2, 3, 4]), 9)
-// assertEquals(unionSum([2000, 50, 551, 550, 23], [551, 50, 23]), 624)
+function unionSum(arr1, arr2) {
+  var result = 0;
+  for (var e of union(arr1, arr2)){
+    result += e;
+  }
+  return result;
+}
+assertEquals(unionSum([1, 2, 3], [1, 2]), 6)
+assertEquals(unionSum([1, 2, 3, 4], [2, 3, 4]), 10)
+assertEquals(unionSum([2000, 50, 551, 550, 23], [551, 50, 23]), 3174)
