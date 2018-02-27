@@ -103,3 +103,42 @@ function unionSum(arr1, arr2) {
 assertEquals(unionSum([1, 2, 3], [1, 2]), 6)
 assertEquals(unionSum([1, 2, 3, 4], [2, 3, 4]), 10)
 assertEquals(unionSum([2000, 50, 551, 550, 23], [551, 50, 23]), 3174)
+
+
+/* ---------------------- EXERCISE 6 ---------------------- */
+// Define a function that returns the sum of an array
+function sum(array) {
+  var sum = 0;
+  for (n of array){
+    sum += n;
+  }
+  return sum;
+}
+
+assertEquals(sum([1, 2, 3, 4]), 10);
+assertEquals(sum([10, 10, 10]), 30);
+
+/* ---------------------- EXERCISE 7 ---------------------- */
+// Define a function that returns an array of even numbers
+function evenNumbersOnly(array) {
+  var result = [];
+  for (n of array){
+    if (n % 2 == 0){
+      result.push(n);
+    }
+  }
+  return result;
+}
+
+assertEquals(evenNumbersOnly([1, 2, 3, 4]), [2, 4]);
+assertEquals(evenNumbersOnly([10, 11, 12]), [10, 12]);
+
+/* ---------------------- EXERCISE 8 ---------------------- */
+// Define a function that returns the sum of even numbers in the array
+// hint: reuse the 2 functions that you defined earlier!
+function sumEvenNumbers(array) {
+  return sum(evenNumbersOnly(array));
+}
+
+assertEquals(sumEvenNumbers([1, 2, 3, 4]), 6);
+assertEquals(sumEvenNumbers([10, 11, 12]), 22);
