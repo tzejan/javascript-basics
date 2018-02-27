@@ -3,10 +3,19 @@ var assertEquals = require("./test-helper");
 /* ---------------------- EXERCISE 1 ---------------------- */
 // Define a function to list the properties of a JavaScript object. Go to the editor
 
-function listProperties() {}
+function listProperties(obj) {
+  var result = [];
+  for (k in obj) {
+    result.push(k);
+  }
+  return result.join(" ");
+}
 
-// assertEquals(listProperties({name: 'Tom Hanks'}), 'name')
-// assertEquals(listProperties({name: 'Tom Hanks', age: 50, rollno: 12}), 'name age rollno')
+assertEquals(listProperties({ name: "Tom Hanks" }), "name");
+assertEquals(
+  listProperties({ name: "Tom Hanks", age: 50, rollno: 12 }),
+  "name age rollno"
+);
 
 // Sample Output: name,sclass,rollno
 
