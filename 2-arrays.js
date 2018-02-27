@@ -52,11 +52,25 @@ assertEquals(mostFrequentItem(['yes', 'yes', 'no', 'no', 'yes', 'no']), 'yes');
 
 /* ---------------------- EXERCISE 3 ---------------------- */
 // Write a Javascript function to remove duplicate items from an array (ignore case sensitivity). (Sample input : [1, 'a', 'A', 'b', 2, 2], expected output: [1, 'a', 'b', 2])
-function removeDuplicateItems(arr) {}
+function removeDuplicateItems(arr) {
+  result = [];
+  arr.forEach( (e) => {
+    if (typeof(e) == "string") {
+      if (!result.includes(e.toLowerCase())){
+        result.push(e.toLowerCase());
+      }
+    }
+    else if (!result.includes(e)){
+      result.push(e);
+    }
+  });
+  
+  return result;
+}
 
-// assertEquals(removeDuplicateItems([1, 1, 'a']), [1, 'a'])
-// assertEquals(removeDuplicateItems([1, 1, 'a', 'A']), [1, 'a'])
-// assertEquals(removeDuplicateItems([1, 'a', 'A', 'b', 'B', 2, 2]), [1, 'a', 'b', 2])
+assertEquals(removeDuplicateItems([1, 1, 'a']), [1, 'a'])
+assertEquals(removeDuplicateItems([1, 1, 'a', 'A']), [1, 'a'])
+assertEquals(removeDuplicateItems([1, 'a', 'A', 'b', 'B', 2, 2]), [1, 'a', 'b', 2])
 
 /* ---------------------- EXERCISE 4 ---------------------- */
 // Write a Javascript function to compute the union of two arrays. the returned array should be sorted in ascending order (Sample input: union([1, 2, 3], [100, 2, 1, 10]), expected output: [1, 2, 3, 10, 100])
