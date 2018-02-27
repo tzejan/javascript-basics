@@ -32,9 +32,8 @@ function invertCase(someString){
   for (i = 0; i < result.length; i++){
     if (result[i] >= 'a' && result[i] <= 'z'){
       result[i] = result[i].toUpperCase();
-      continue;
     }
-    if (result[i] >= 'A' && result[i] <= 'Z'){
+    else if (result[i] >= 'A' && result[i] <= 'Z'){
       result[i] = result[i].toLowerCase();
     }
   }
