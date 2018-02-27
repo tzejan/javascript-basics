@@ -74,10 +74,22 @@ assertEquals(removeDuplicateItems([1, 'a', 'A', 'b', 'B', 2, 2]), [1, 'a', 'b', 
 
 /* ---------------------- EXERCISE 4 ---------------------- */
 // Write a Javascript function to compute the union of two arrays. the returned array should be sorted in ascending order (Sample input: union([1, 2, 3], [100, 2, 1, 10]), expected output: [1, 2, 3, 10, 100])
-function union() {}
+function union(arr1, arr2) {
+  result = arr1.slice();
+  arr2.forEach( (e) => {
+    if (!result.includes(e)){
+      result.push(e);
+    }
+  });
+  // sorting based on a compare function for numbers. a<b returns -1, a>b returns 1
+  result.sort(function(a, b) {
+    return a - b;
+  });
+  return result;
+}
 
-// assertEquals(union([1, 2], [2, 3]), [1, 2, 3])
-// assertEquals(union([1, 2, 3], [100, 2, 1, 10]), [1, 2, 3, 10, 100])
+assertEquals(union([1, 2], [2, 3]), [1, 2, 3])
+assertEquals(union([1, 2, 3], [100, 2, 1, 10]), [1, 2, 3, 10, 100])
 
 /* ---------------------- EXERCISE 5 ---------------------- */
 // Write a Javascript function to compute sum of a union. (Hint: Reuse the union() function which you wrote!) (Sample input: intersection([1, 2, 3], [1, 2]), expected output: 3)
